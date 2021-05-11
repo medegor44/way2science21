@@ -1,0 +1,263 @@
+\documentclass{beamer}
+
+\usepackage{cmap}					% поиск в PDF
+\usepackage{mathtext} 				% русские буквы в формулах
+\usepackage[T2A]{fontenc}			% кодировка
+\usepackage[utf8]{inputenc}			% кодировка исходного текста
+\usepackage[english,russian]{babel}	% локализация и переносы
+\usepackage{cmap}					% поиск в PDF
+\usepackage{mathtext} 				% русские буквы в формулах
+\usepackage[T2A]{fontenc}			% кодировка
+\usepackage[utf8]{inputenc}			% кодировка исходного текста
+\usepackage[english,russian]{babel}	% локализация и переносы
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} % AMS
+\usepackage{xypic}
+\newcommand*{\hm}[1]{#1\nobreak\discretionary{}
+{\hbox{$\mathsurround=0pt #1$}}{}}
+
+\newtheorem{rtheorem}{Теорема}
+\newtheorem{rhyp}{Гипотеза}
+\newtheorem{rproof}{Доказательство}
+\newtheorem{rexample}{Пример}
+\newtheorem{rdefinition}{Определение}
+
+\newcommand{\tors}[1]{\textup{tors}\left(#1\right)}
+\newcommand{\ox}{\otimes}
+\newcommand{\FF}{\mathcal{F}}
+\newcommand{\OO}{\mathcal{O}}
+
+
+\newcommand{\Tors}[2]{\textup{tors}_{#1}\;#2}
+\newcommand{\mf}[1]{\mathfrak{#1}}
+\newcommand{\Tor}{\textup{Tor}}
+\newcommand{\Hom}{\textup{Hom}}
+\newcommand{\im}[1]{\textup{im\;}#1}
+\newcommand{\coker}[1]{\textup{coker\;}#1}
+\newcommand{\ord}{\textup{ord}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\nil}[1]{\mf{N}(#1)}
+\newcommand{\jac}[1]{\mf{R}(#1)}
+\newcommand{\spec}[1]{\textup{Spec}(#1)}
+\newcommand{\ann}[1]{\textup{Ann}(#1)}
+\renewcommand{\emptyset}{\varnothing}
+\renewcommand{\bar}[1]{\overline{#1}}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\ge}{\geqslant}
+\renewcommand{\le}{\leqslant}
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\hat}{\widehat}
+
+\usetheme{Boadilla}
+\title{Обобщённая поточечная функция Гильберта \\ когерентного пучка на многообразии и её первые свойства}
+\author{Выполнил: Медведев Е.А. \\ Научный руководитель: Тимофеева Н.В.}
+\institute{ЯрГУ им. П.Г. Демидова}
+\date{12 мая 2021}
+
+\begin{document}
+    \frame[plain]{\titlepage}
+
+    \begin{frame}
+        \frametitle{Понятие обобщенной функции Гильберта}
+    
+        Пусть $X$ -- алгебраическое многообразие или схема над полем $k = \bar{k}$, $\OO_x$ -- его структурный пучок.
+        Пусть задан некоторый когерентный пучок $\OO_X$-модулей $\FF$. Обобщенной поточечной функцией Гильберта пучка $\FF$ в точке $p$ назовем следующее отношение
+
+        \begin{equation}
+            \pi^{\FF}_p(n) = \frac{\dim (\FF \ox \OO_X / \mathfrak{m}^s)_p}{\dim (\OO_X / \mathfrak{m}^s)_p},
+        \end{equation}
+    
+        где $\mathfrak{m}$ -- пучок максимальных идеалов, соответствующий точке $p$.
+        
+        Отметим, что $(\FF \ox \OO_X / \mathfrak{m}^s)_p$ и $(\FF \ox \OO_X / \mathfrak{m}^s)_p$ являются конечномерными $k$-алгебрами.
+
+        Далее в докладе под функцией Гильберта будем понимать обобщённую поточечную функцию Гильберта.
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Постановки задач}
+
+        В рамках работы были поставлены следующие задачи:
+        \begin{itemize}
+            \item Вычислить значения обобщенной поточечной функции Гильберта в некоторых ключевых ситуациях.
+            \item Сформулировать первые наблюдения и первые свойства функции.
+        \end{itemize}
+    \end{frame}
+    
+    \begin{frame}
+        \frametitle{Функция Гильберта как критерий локальной свободы}
+
+        Можно сформулировать следующее утверждение (добавление к результату из \cite{Timofeeva})
+        \begin{rtheorem}
+            Обобщенная поточечная функция Гильберта локально свободного пучка $\FF$ является константой, одинаковой во всех точках многообразия $X$, и равна рангу пучка $\FF$.
+        \end{rtheorem}
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Функция Гильберта как критерий локальной свободы}
+
+        Рассмотрим следующий пучок (пучок-небоскреб) $\FF$:
+        \begin{equation*}
+            \FF(U) = \begin{cases}
+                k, & \text{если $0 \in U$},\\
+                0, & \text{если $0 \not \in U$}.
+            \end{cases}
+        \end{equation*}
+        на $X = \spec{k[x]}$. Вычислим для него значение функции Гильберта.
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Функция Гильберта как критерий локальной свободы}
+
+        Пусть $p = 0$, тогда $\mathfrak{m} = (x) \subset k[x]$. В силу структуры пучка-небоскреба, мы можем сначала провести вычисления с модулями глобальных сечений, а затем выполнить локализацию в точке.
+
+        Имеем
+
+        \begin{equation*}
+            (\FF \ox \OO_X / \mathfrak{m}^n)_p \simeq (\FF(X) \ox_{k[x]} k[x] / (x^n)) \ox_{k[x]} k[x]_{(x)} \simeq k,
+        \end{equation*}
+
+        так как $k$ -- поле, то его локализация будет изоморфна ему самому.  Поэтому $$\dim (\FF \ox \OO_X / \mathfrak{m}^n)_p = 1$$.
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Функция Гильберта как критерий локальной свободы}
+
+        Вычислим $\dim(\OO_X / \mathfrak{m}^n)$.
+        
+        \begin{equation*}
+            (\OO_X / \mathfrak{m}^n)_p = (k[x]/(x)^n) \ox_{k[x]} k[x]_{(x)} \simeq k[x] / (x^n).
+        \end{equation*}
+        
+        Последний изоморфизм алгебр справедлив в силу локальности алгебры $k[x] / (x^n)$.
+        
+        Так как $k[x] / (x^n) = \left<\bar{1}, \bar{x}, \dots, \bar{x}^{n - 1} \right>_k$, то 
+        \begin{equation*}
+            \dim (\OO_{X})_p = \dim k[x]/(x^n) = n.
+        \end{equation*}
+        Таким образом, 
+        \begin{equation*}
+            \pi^{\FF}_p(n) = \frac{1}{n}.
+        \end{equation*}
+    \end{frame}
+
+    
+
+    \begin{frame}
+        \frametitle{Функция Гильберта как инструмент для изучения носителя пучка}
+
+        Пусть задана аффинная плоскость $X = \spec{k[x, y]}$ и прямая $x = 0$ на ней. Этой прямой соответствует замкнутая подсхема
+        с пучком колец $\OO_l = \OO_X / (x)$. Вычислим функцию Гильберта для этого пучка в точке $(0, 0)$.
+        Этой точке будет соответствовать максимальный идеал $\mathfrak{m} = (x, y)$.
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Функция Гильберта как инструмент для изучения носителя пучка}
+
+        Вычислим знаменатель. Так как $(x, y)^n = (x^n, x^{n - 1}y, \dots, y^n)$, то
+        \begin{equation*}
+            k[x, y] / (x, y)^n \simeq \left< \bar{x}^s\bar{y}^t | 0 \leq s + t < n \right>_k.
+        \end{equation*}
+
+        Полученная алгебра будет являться локальной, и поэтому будет изоморфна своей локализации.
+        Таким образом,
+        \begin{equation*}
+            \dim (\OO_x / (x, y)^n)_p = \frac{n(n + 1)}{2}.
+        \end{equation*}
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Функция Гильберта как инструмент для изучения носителя пучка}
+
+        Вычислим числитель. $k[x, y] / (x) \simeq k[y]$.
+        \begin{equation*}
+            \OO_x / (x, y)^n \ox_{k[x, y]} k[y] \simeq \left< \bar{x}^s\bar{y}^t \ox y^r | 0 \leq s + t < n, r \geq 0 \right>_k.
+        \end{equation*}
+
+        В силу универсальности тензорного произведения, 
+        \begin{equation*}
+            \OO_x / (x, y)^n \ox_{k[x, y]} k[y] \simeq \left<\bar{1}, \bar{y}, \dots, \bar{y}^{n-1} \right>_k \simeq k[y] / (y^n).
+        \end{equation*}
+        Имеем
+        \begin{equation*}
+            \dim (\OO_x / (x, y)^n \ox_{k[x, y] }k[y])_p = n.
+        \end{equation*}
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Функция Гильберта как инструмент для изучения носителя пучка}
+
+        Таким образом,
+        \begin{equation*}
+            \pi^{\OO_l}_p(n) = \frac{n}{\frac{n(n + 1)}{2}} = \frac{2}{n + 1} \sim \frac{2}{n^1} \text{ при $n \rightarrow \infty$}.
+        \end{equation*}
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Функция Гильберта как инструмент для изучения носителя пучка}
+
+        Теперь проведем те же самые действия, но для другого подмногообразия, которое задано уравнением $xy = 0$.
+        Пучком колец этого подмногообразия будет $\OO_c = \OO_X / (xy)$.
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Функция Гильберта как инструмент для изучения носителя пучка}
+
+        Вычислим числитель функции Гильберта пучка $\OO_c$ в точке $(0, 0)$. Имеем изоморфизм $k$-векторных пространств. 
+        \begin{equation*}
+            k[x, y] / (xy) \simeq \left<1, x^s, y^t | s, t > 0 \right>_k \simeq k[x] \oplus yk[y].
+        \end{equation*}
+        Обозначим $k[x, y] / (x, y)^n \ox_{k[x, y]} k[x] =: T_n[x]$.
+        Заметим, что $T_n[x] \simeq \left< \bar{1}, \bar{x}, \dots, \bar{x}^n \right>_k$.
+        
+        Умножим полученную сумму тензорно на $k[x, y] / (x, y)^n$.
+
+        \begin{equation*}
+            k[x, y] / (xy) \ox_{k[x, y]} k[x, y] / (x, y)^n \simeq T_n[x] \oplus yT_n[y].
+        \end{equation*}
+
+        Заметим, $T_n[x] \oplus yT_n[y] \simeq \left<1, \bar{x}^s, \bar{y}^t | 0 < s, t < n \right>_k$
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Функция Гильберта как инструмент для изучения носителя пучка}
+    
+        Полученная алгебра будет локальной. $\dim (T_n[x] \oplus yT_n[y]) = 2n - 1$. Таким образом,
+
+        \begin{equation}
+            \pi^{\OO_c}_p(n) = \frac{2n - 1}{\frac{n(n + 1)}{2}} = 2 \cdot \frac{2n - 1}{n(n + 1)} \sim \frac{4}{n^1}, \text{ при $n \rightarrow \infty$.}
+        \end{equation}
+    \end{frame}
+    
+    \begin{frame}{Указать вычисления для плоскости и прямой в пространстве}
+        Возможно стоит нарисовать табличку с размерностями, значениями функции и их асимптотикой.
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Функция Гильберта как инструмент для изучения носителя пучка}
+    
+        Можно сформулировать гипотезу: 
+        \begin{rhyp}
+            $\pi^{\OO_m}_p(n) \sim \frac{\alpha}{n^\beta}$, 
+            где $\beta$ -- коразмерность носителя.
+        \end{rhyp}
+    \end{frame}
+
+    \frame[plain]{\titlepage}
+
+    \begin{frame}
+        \frametitle{Список литературы}
+        \begin{thebibliography}{00}
+            \bibitem{Eisenbud}
+            Айзенбад, Д. Коммутативная алгебра с прицелом на алгебраическую геометрию / Д. Айзенбад; пер. с англ. О.Н. Попова и др. под ред. Е.С. Голода. --- М.: МЦНМО, 2017. --- 752 с.
+            \bibitem{A-M}
+            Атья, М. Введение в коммутативную алгебру / М. Атья, И. Макдональд; пер. с англ. Ю.И. Манин. --- М.: Издательство <<Мир>>, 1972. --- 158 с.
+            \bibitem{Timofeeva}
+            Тимофеева Н.В., Инфинитезимальный критерий плоскости для проективного морфизма схем, Алгебра и анализ, 2014, том 26, выпуск 1, 185–195
+            \bibitem{Hartshorne}
+            Хартсхорн Р., Алгебраическая геометрия / Р. Хартсхорн; <<Мир>>, М.: 1981
+        \end{thebibliography}
+    \end{frame}
+
+    \include{dop}
+\end{document}
